@@ -10,7 +10,7 @@ export const BlogsProvider = ({ children }) => {
 
   const createBlog = async newBlog => {
     const data = await createBlogApi(newBlog)
-    console.log(data)
+    setBlogs(state => [data, ...state])
   }
 
   const getBlogs = async () => {

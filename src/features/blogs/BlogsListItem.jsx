@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import Avatar from '../../ui/Avatar'
-import { formatShortPostingTime } from '../../utils/helperFuntions'
+import { formatPostingTime } from '../../utils/helperFuntions'
 
 const BlogsListItem = ({ item }) => {
   const {
@@ -23,21 +23,24 @@ const BlogsListItem = ({ item }) => {
             alt={title}
             className="h-56 w-full object-cover md:order-2 md:h-auto md:w-1/4"
           />
-          <div className="flex min-h-[300px] flex-grow flex-col justify-between gap-4 p-5">
+          <div className="flex flex-grow flex-col gap-4 p-5 md:min-h-[300px]">
             <div className="space-y-2">
               <span className="badge badge-secondary badge-outline badge-lg">
                 {tag}
               </span>
-              <h2 className="text-2xl font-semibold text-gray-800">{title}</h2>
-              <h3 className="text-lg text-gray-600">{subtitle}</h3>
+              <h2 className="text-2xl font-semibold">
+                {title}
+              </h2>
+              <h3 className="text-lg">{subtitle}</h3>
             </div>
+            <div className="flex-1"></div>
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <Avatar name={name} />
-                <span className="font-medium text-gray-700">{name}</span>
+                <span className="font-medium">{name}</span>
               </div>
-              <div className="text-sm text-gray-500">
-                {formatShortPostingTime(createdAt)}
+              <div className="text-sm">
+                {formatPostingTime(createdAt)}
               </div>
             </div>
           </div>

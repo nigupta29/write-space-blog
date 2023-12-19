@@ -1,17 +1,17 @@
-export const formatShortPostingTime = postingTime => {
-  const currTime = new Date(postingTime)
-  const options = { weekday: 'long', month: 'short', day: 'numeric' }
-  return currTime.toLocaleDateString(undefined, options)
-}
+export const formatPostingTime = (postingTime, isLongFormat = false) => {
+  const date = postingTime?.toDate() ?? postingTime
+  const currTime = new Date(date)
 
-export const formatLongPostingTime = postingTime => {
-  const currTime = new Date(postingTime)
   const options = {
     weekday: 'long',
-    year: 'numeric',
     month: 'short',
     day: 'numeric',
   }
+
+  if (isLongFormat) {
+    options.year = 'numeric'
+  }
+
   return currTime.toLocaleDateString(undefined, options)
 }
 

@@ -8,7 +8,7 @@ const BlogsList = () => {
   if (loading) return <BlogsLoader />
 
   return (
-    <div className="my-10 grid grid-cols-2 gap-10 xl:grid-cols-3">
+    <div className="my-10 grid grid-cols-1 gap-10 md:grid-cols-2 xl:grid-cols-3">
       {blogs?.map(item => (
         <BlogsListItem item={item} key={item.id} />
       ))}
