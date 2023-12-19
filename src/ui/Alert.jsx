@@ -1,10 +1,20 @@
 import PropTypes from 'prop-types'
 
-const Alert = ({ type, message }) => {
-  const alertStyle = `alert${type ? ` alert-${type}` : ''}`
+const getAlertStyle = type => {
+  switch (type) {
+    case 'error':
+      return 'alert-warning'
+    case 'success':
+      return 'alert-success'
 
+    default:
+      return
+  }
+}
+
+const Alert = ({ type, message }) => {
   return (
-    <div role="alert" className={alertStyle}>
+    <div role="alert" className={`alert ${getAlertStyle(type)}`}>
       <i className="fas fa-exclamation-triangle"></i>
       <span>{message}.</span>
     </div>
