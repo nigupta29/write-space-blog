@@ -1,9 +1,9 @@
-import BlogsLoader from '../ui/loaders/BlogsLoader'
+import BlogsList from '../features/blogs/BlogsList'
 
 const Home = () => {
   return (
     <div>
-      <BlogsLoader />
+      <BlogsList />
     </div>
   )
 }
