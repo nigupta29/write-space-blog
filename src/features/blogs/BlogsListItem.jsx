@@ -28,9 +28,7 @@ const BlogsListItem = ({ item }) => {
               <span className="badge badge-secondary badge-outline badge-lg">
                 {tag}
               </span>
-              <h2 className="text-2xl font-semibold">
-                {title}
-              </h2>
+              <h2 className="text-2xl font-semibold">{title}</h2>
               <h3 className="text-lg">{subtitle}</h3>
             </div>
             <div className="flex-1"></div>
@@ -39,9 +37,7 @@ const BlogsListItem = ({ item }) => {
                 <Avatar name={name} />
                 <span className="font-medium">{name}</span>
               </div>
-              <div className="text-sm">
-                {formatPostingTime(createdAt)}
-              </div>
+              <div className="text-sm">{formatPostingTime(createdAt)}</div>
             </div>
           </div>
         </div>
@@ -60,7 +56,7 @@ BlogsListItem.propTypes = {
     subtitle: PropTypes.string,
     tag: PropTypes.string.isRequired,
     imageUrl: PropTypes.string.isRequired,
-    createdAt: PropTypes.string.isRequired, // Assuming createdAt is a string representing the timestamp
+    createdAt: PropTypes.object.isRequired, // Assuming createdAt is a string representing the timestamp
   }).isRequired,
 }
 

@@ -1,4 +1,5 @@
 import { useBlogs } from '../../context/BlogsContext'
+import GridTemplate from '../../ui/GridTemplate'
 import BlogsLoader from '../../ui/loaders/BlogsLoader'
 import BlogsListItem from './BlogsListItem'
 
@@ -8,11 +9,11 @@ const BlogsList = () => {
   if (loading) return <BlogsLoader />
 
   return (
-    <div className="my-10 grid grid-cols-1 gap-10 md:grid-cols-2 xl:grid-cols-3">
+    <GridTemplate>
       {blogs?.map(item => (
         <BlogsListItem item={item} key={item.id} />
       ))}
-    </div>
+    </GridTemplate>
   )
 }
 
