@@ -10,16 +10,17 @@ const CreateBlog = () => {
   const [message, setMessage] = useState({})
   const [loading, setLoading] = useState(false)
 
-  const {
-    currentUser: { uid, displayName },
-  } = useAuth()
   const { createBlog } = useBlogs()
-
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm()
+
+  const { currentUser } = useAuth()
+  if (!currentUser) return null
+  const { uid, displayName } = currentUser
 
   const onSubmit = async data => {
     const newBlog = { author: { id: uid, name: displayName }, ...data }
@@ -27,6 +28,7 @@ const CreateBlog = () => {
       setLoading(true)
       await createBlog(newBlog)
       setMessage({ type: 'success', content: 'Blog Created Successfully' })
+      reset()
     } catch (error) {
       setMessage({ type: 'error', content: error.message })
     } finally {
@@ -123,9 +125,6 @@ const CreateBlog = () => {
           <div className="label">ImageUrl</div>
           <input
             type="url"
-            value={
-              'https://images.unsplash.com/photo-1664447972862-e26efc5b709f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80'
-            }
             placeholder="https://images.unsplash.com/..."
             {...register('imageUrl', {
               required: 'The imageUrl field is required',
