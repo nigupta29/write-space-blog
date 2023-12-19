@@ -1,7 +1,9 @@
+import BlogsLoader from '../ui/loaders/BlogsLoader'
+
 const Home = () => {
   return (
     <div>
-      <h3>Home</h3>
+      <BlogsLoader />
     </div>
   )
 }
